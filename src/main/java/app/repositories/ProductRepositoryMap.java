@@ -47,10 +47,13 @@ public class ProductRepositoryMap implements ProductRepository{
         Long id = updatedProduct.getId();
         double newPrice = updatedProduct.getPrice();
         String newName = updatedProduct.getName();
+        boolean newActice = updatedProduct.isActive();
         Product oldProduct =findById(id);
         if(oldProduct != null){
             oldProduct.setName(newName);
             oldProduct.setPrice(newPrice);
+            oldProduct.setActive(newActice);
+
         }
         return oldProduct;
     }
@@ -66,4 +69,27 @@ public class ProductRepositoryMap implements ProductRepository{
         oldProduct.setActive(false);
         return true;
     }
+
+//    public static void main(String[] args) {
+//        ProductRepositoryMap database = new ProductRepositoryMap();
+//        ProductRepository repo = new ProductRepositoryMap();
+//        System.out.println(repo.save(new Product(true,"Coffee", 3)));
+//        System.out.println(repo.save(new Product(false,"Baguette", 4)));
+//        //TODO check  null field name
+//        System.out.println(repo.findAll());
+//        System.out.println(repo.findById(2L));
+//
+//        System.out.println("===========DELETE===============");
+//        repo.deleteById(1L);
+//        System.out.println(repo.findById(1L));
+//
+//
+//        System.out.println("===========UPDATE===============");
+//       Product newProduct = new Product(true,"Baguette",7);
+//       newProduct.setId(2L);
+//        System.out.println(repo.updateProduct(newProduct));
+//
+//
+//
+//    }
 }
