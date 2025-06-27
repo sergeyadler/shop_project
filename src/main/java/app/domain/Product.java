@@ -71,12 +71,13 @@ public class Product {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Product{");
-        sb.append("id=").append(id);
-        sb.append(", isActive=").append(isActive);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", price=").append(price);
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer("        \u001B[32m                 Product : ");
+        sb.append("     id : ").append(id);
+        sb.append("     | isActive: ").append(isActive);
+        sb.append("     | name: ").append(name) ;
+        sb.append("     | price : ").append(price);
+        sb.append("\u001B[0m");
+
         return sb.toString();
     }
 }
