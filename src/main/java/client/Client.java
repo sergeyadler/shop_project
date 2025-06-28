@@ -116,10 +116,12 @@ public class Client {
                         break;
 
                     case 6:
-                        System.out.println("Введите название продукта");
-                        name = scanner.nextLine().trim();
+                        System.out.println("Введите наименование продукта: ");
+                        name = scanner.nextLine();
                         productController.deleteByName(name);
+                        break;
                     case 7:
+                        //TODO check restore id
                         System.out.println("Введите ID продукта");
                         id = Long.parseLong(scanner.nextLine());
 
@@ -127,18 +129,18 @@ public class Client {
                         break;
 
                     case 8:
-                        System.out.println("Общее количество продуктов ");
-                        productController.getActiveProductsTotalCount();
+                        System.out.println("Общее количество продуктов " + productController.getActiveProductsTotalCount());
+
                         break;
 
                     case 9:
-                        System.out.println("Общая стоимость продуктов ");
-                        productController.getActiveProductsTotalCost();
+                        System.out.println("Общая стоимость продуктов " + productController.getActiveProductsTotalCost());
+
                         break;
 
                     case 10:
-                        System.out.println("Средняя стоимость продукта ");
-                        productController.getActiveProductsAveragePrice();
+                        System.out.println("Средняя стоимость продукта "+ productController.getActiveProductsAveragePrice());
+
                         break;
                     case 0:
                         return;
