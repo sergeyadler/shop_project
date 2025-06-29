@@ -154,6 +154,8 @@ public class Client {
 
                         break;
                     case 0:
+                        System.out.println("Выход из меню продуктов");
+
                         return;
                     default:
                         System.err.println("Некорректный ввод");
@@ -189,7 +191,7 @@ public class Client {
 
                 int choice = Integer.parseInt(scanner.nextLine().trim());
 
-                switch (choice){
+                switch (choice) {
                     case 1:
                         System.out.println("Введите имя покупателя");
                         String name = scanner.nextLine().trim();
@@ -208,16 +210,79 @@ public class Client {
                         System.out.println(foundCustomer);
                         break;
                     case 4:
+                        System.out.println("Введите ID покупателя");
+                        id = Long.parseLong(scanner.nextLine());
+                        System.out.println("Введите имя покупателя");
+                        name = scanner.nextLine().trim();
+                        customerController.updateCustomer(id, name);
 
                         break;
 
                     case 5:
-                        System.out.println("Введите ID продукта");
+                        System.out.println("Введите ID покупателя");
+                        id = Long.parseLong(scanner.nextLine());
+                        customerController.deleteCustomerById(id);
+                        break;
+                    case 6:
+                        System.out.println("Введите имя покупателя");
+                        name = scanner.nextLine().trim();
+                        customerController.deleteByName(name);
+                        break;
+                    case 7:
+                        System.out.println("Введите ID покупателя");
+                        id = Long.parseLong(scanner.nextLine());
+                        customerController.restoreById(id);
+                        break;
+                    case 8:
+                        System.out.println("Общее количество покупателей : " + customerController.getTotalActiveCustomerCount());
+                        break;
+                    case 9:
+                        System.out.println("Введите ID покупателя");
+                        id = Long.parseLong(scanner.nextLine());
+                        System.out.println("Общая стоимость корзины покупателя : " + customerController.getCustomerCartTotalCost(id));
+                        break;
+                    case 10:
+                        System.out.println("Введите ID покупателя");
+                        id = Long.parseLong(scanner.nextLine());
+                        System.out.println("Средняя стоимость продуктов покупателя покупателя : " + customerController.getAverageProductPriceInCustomerCart(id));
+                        break;
+                    case 11:
+                        System.out.println("Введите ID покупателя:");
+                        Long customerId = Long.parseLong(scanner.nextLine());
 
+                        System.out.println("Введите ID продукта:");
+                        Long productId = Long.parseLong(scanner.nextLine());
+
+                        customerController.addProductToCustomerCart(customerId, productId);
+                        System.out.println("Продукт добавлен в корзину!");
+                        break;
+                    case 12:
+                        System.out.println("Введите ID покупателя:");
+                        customerId = Long.parseLong(scanner.nextLine());
+
+                        System.out.println("Введите ID продукта:");
+                        productId = Long.parseLong(scanner.nextLine());
+
+                        customerController.removeProductFromCustomerCart(customerId, productId);
+                        System.out.println("Продукт удалён из корзины!");
+                        break;
+                    case 13:
+                        System.out.println("Введите ID покупателя:");
+                        id = Long.parseLong(scanner.nextLine());
+                        customerController.clearCustomerCart(id);
+                        System.out.println("Корзина очищена!");
+                        break;
+                    case 0:
+                        System.out.println("Выход из меню покупателей");
+                        return;
+
+                    default:
+                        System.out.println("Некорректный выбор, попробуйте снова.");
                         break;
 
 
-                }            } catch (Exception e) {
+                }
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
